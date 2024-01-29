@@ -15,24 +15,25 @@ const UserSchema = new mongoose.Schema({
     password:{
         type:String,
         minLength:6,
-        unique:true,
-        required:true
+        // unique:true,
+        // required:true
+        maxLength : 10
     },
     firstName:{
         type:String,
-        minLength:6,
+        minLength:1,
         required:true,
         trim:true
     },
     lastName:{
         type:String,
-        minLength:6,
+        minLength:1,
         required:true,
         trim:true
     }
 })
 
-const todoSchema = new mongoose.model({
+const todoSchema = new mongoose.Schema({
     title :String,
     description:String,
     completed:{
@@ -41,8 +42,10 @@ const todoSchema = new mongoose.model({
     }
 }) 
 
-const User =  mongoose.model("User" , UserSchema)
+const User =  mongoose.model('User' , UserSchema);
+const Todos = mongoose.model('Todos' , todoSchema)
 
 module.exports={
-    User
+    User,
+    Todos
 }
