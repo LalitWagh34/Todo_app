@@ -3,9 +3,35 @@ import { SubHeading } from "../components/SubHeading"
 import { InputField } from "../components/InputField"
 import { Button } from "../components/Button"
 import { BottomWrapping } from "../components/BottomWrapping"
+import { useEffect, useState } from "react"
+import axios from "axios"
 
 
-export function SignIn(){
+export async function SignIn(){
+    const [username , setUsername] = useState(" ");
+    const [password , setPassword] = useState(" ");
+    const [usernameError , setUsernameError] = useState("");
+    const [passwordError , setPasswordError] = useState("");
+    
+    useEffect(()=>{
+        setUsernameError("");
+        setPasswordError("");
+    },[username , password])
+
+    try{
+        const response = await axios.post("http://localhost:3000/api/signin")
+            if (response.status === 200){
+                var jwt  = response.data.token;
+                localStorage.setItem("token" , jwt);
+                Navigate("/signup")
+            }
+    }
+    catch(error){
+        if (error.response.status === 404){
+            setUsernameError("User Already Exists");
+        }
+    }
+
     return (
         // bg-slate-200 grid md:grid-cols-2 md:items-center h-screen overflow-y-auto gap-36 items-center sm:max-xl:p-9
         <div className="bg-slate-200 grid md:grid-cols-2 md:items-center h-screen overflow-y-auto gap-36 items-center sm:max-xl:p-9">
