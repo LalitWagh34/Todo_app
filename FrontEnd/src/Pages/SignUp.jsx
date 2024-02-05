@@ -44,11 +44,11 @@ export function SignUp (){
                 const response = await axios.post("http://localhost:3000/api/signup", {
                     firstName ,
                     lastName,
-                    username , 
+                    username, 
                     password
                 });
                 localStorage.setItem("token" , response.data.token);
-                navigate("/signin")
+                navigate("/todos")
             }} title={"Sign Up"}/>
 
         </div>

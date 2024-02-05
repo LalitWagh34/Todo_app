@@ -1,4 +1,4 @@
-export function AppBar({title , firstName ,onClick ,label}){
+export function AppBar({title , firstName ,onClick ,label }){
     return <div className="flex justify-between p-6 items-center cursor-pointer">
     <div className=" font-bold text-red-500 ml-[100px]">
         <span className="text-6xl">t</span>
@@ -13,8 +13,8 @@ export function AppBar({title , firstName ,onClick ,label}){
             className="w-8 h-8 bg-[#2596be] rounded-full"
         ></img>
     </div>
-    <div className="bg-amber-500 mr-12 h-12 w-24 flex items-center justify-center rounded-md">
-        <button onClick={onClick}>{label}</button>
+    <div className="bg-amber-500 mr-12 h-12 w-24  flex items-center justify-center rounded-md">
+        <button onClick1={onClick}>{label}</button>
     </div>  
     </div>
       
