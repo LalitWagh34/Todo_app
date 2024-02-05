@@ -10,7 +10,7 @@ export function Todos() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(()=>{
-    axios.get("http://localhost:3000/account/myTodo")
+    axios.get("http://localhost:3000/account/NewTodo")
     .then(response =>setTodos(response.data))
     .catch(error => console.log('Error fetching todos:' ,error))
   },[])
@@ -25,7 +25,7 @@ export function Todos() {
 
   const handleModalSubmit = (data) => {
 
-    axios.post("http://localhost:3000/account/newTodo" ,data)
+    axios.post("http://localhost:3000/account/myTodo" ,data)
     .then(response =>{
         setTodos([...todos ,response.data]);
         closeModal();

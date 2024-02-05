@@ -41,14 +41,20 @@ export function SignUp (){
                     title={"Password"} placeholder={"123123"}/>
         <div className="mt-4">
             <Button onClick={async()=>{
-                const response = await axios.post("http://localhost:3000/api/signup", {
-                    firstName ,
-                    lastName,
-                    username, 
-                    password
-                });
-                localStorage.setItem("token" , response.data.token);
-                navigate("/todos")
+                try{
+                    const response = await axios.post("http://localhost:3000/api/signup", {
+                        firstName ,
+                        lastName,
+                        username, 
+                        password
+                    });
+                    console.log(response.data.token);
+                    localStorage.setItem("token" , response.data.token);
+                    navigate("/todos")
+                }catch(error){
+                    console.error("error in signup" ,error)
+                }
+               
             }} title={"Sign Up"}/>
 
         </div>

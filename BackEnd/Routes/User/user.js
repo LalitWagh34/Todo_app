@@ -29,9 +29,15 @@ router.post("/signup" , async(req , res)=>{
     firstName:req.body.firstName,
     lastName:req.body.lastName
    })
+    const token = jwt.sign({
+        username : req.body.username
+    } , JWT_SECRET)
+
     res.json({
+        token :token,
         msg:"User created Successfully"
     })
+
 })
 
 router.post ("/signin" , async(req , res)=>{
@@ -47,7 +53,7 @@ router.post ("/signin" , async(req , res)=>{
     })
     if (!userExists){
         return res.status(404).json({
-            mag:" Username Does not Exists !!!"
+            msg:" Username Does not Exists !!!"
         })
     }
     
